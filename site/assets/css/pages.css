@@ -14,3 +14,10 @@
 .nf img{width:90px;border-radius:6px;margin-bottom:26px}
 .nf b{font-family:var(--disp);font-size:clamp(60px,10vw,120px);color:var(--gold);font-weight:500;line-height:1}
 .nf p{color:var(--ink2);max-width:420px}
+/* cabeçalho simples das páginas legais */
+header.top{position:fixed;inset:0 0 auto;z-index:40;height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 var(--gut);background:rgba(14,13,12,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.brand img{width:32px;height:36px;object-fit:cover;border-radius:3px}
+.brand b{display:block;font-family:var(--disp);font-weight:600;font-size:22px;letter-spacing:.22em;line-height:1}
+.brand small{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin-top:4px}
+.hdr-cta{height:42px;padding:0 20px;font-size:13px}

@@ -21,7 +21,7 @@
 <link rel="preload" href="assets/fonts/cormorant.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/main.css">
-<noscript><style>.jr{height:auto!important}.jr-stage{position:relative;height:auto}.scene{position:relative!important;opacity:1!important;min-height:100vh}.scene .copy{opacity:1!important;transform:none!important}.rail,.jr-skip{display:none}.rv{opacity:1!important;transform:none!important}</style></noscript>
+<noscript><style>#intro{display:none}.pin{height:auto!important}.stage{position:relative;height:auto;min-height:100vh}.frame{position:relative!important;opacity:1!important;clip-path:none!important;min-height:80vh}.frame .copy,.tour-step{opacity:1!important;transform:none!important;position:relative!important}.rv{opacity:1!important;transform:none!important}</style></noscript>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -66,116 +66,130 @@
 }
 </script>
 </head>
-<body>
+<body class="is-intro">
 <a class="skip" href="#destinos">Pular para o conteúdo</a>
 
-<header class="top" id="top">
-  <a class="brand" href="#top" aria-label="TMS Advogados Associados, início"><img src="assets/img/escudo.jpg" alt="" width="34" height="38"><span><b>TMS</b><small>Advogados Associados</small></span></a>
-  <nav class="links" aria-label="Principal">
-    <a href="#destinos">Destinos</a><a href="#como-funciona">Como funciona</a><a href="#escritorio">Escritório</a><a href="#faq">Perguntas</a><a href="#formulario">Contato</a>
-  </nav>
-  <div class="hdr-r">
-    <a class="btn hdr-cta" href="#formulario">Analisar meu caso</a>
-    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><span class="ic i-list"></span></button>
-  </div>
-</header>
+<!-- INTRO: "SOMOS" e o nome, letra por letra -->
+<div id="intro" aria-hidden="true">
+  <p class="intro-somos">Somos</p>
+  <p class="intro-name" id="introName">TMS Advogados Associados</p>
+  <i class="intro-line"></i>
+</div>
 
+<button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><i></i><i></i></button>
 <div class="mnu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
-  <button class="mclose" type="button" data-close aria-label="Fechar menu"><span class="ic i-x"></span></button>
   <nav aria-label="Menu">
-    <a href="#destinos" data-close>Destinos</a><a href="#como-funciona" data-close>Como funciona</a><a href="#escritorio" data-close>Escritório</a><a href="#faq" data-close>Perguntas</a><a href="#formulario" data-close>Contato</a>
+    <a href="#abertura" data-close>Início</a><a href="#cidades" data-close>Cidades</a><a href="#como-fazemos" data-close>Como fazemos</a><a href="#destinos" data-close>Vistos por país</a><a href="#escritorio" data-close>Escritório</a><a href="#faq" data-close>Perguntas</a>
   </nav>
-  <a class="btn" data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener">Falar no WhatsApp</a>
+  <p class="mnu-foot"><span data-cfg="endereco">Alameda Itapecuru, 645</span>, Alphaville, <span data-cfg="cidadeUF">Barueri/SP</span></p>
 </div>
 
 <main>
-<!-- JORNADA: cada cena usa a foto assets/img/cenas/<data-img>.jpg (e -m.jpg no celular) -->
-<section class="jr" id="jornada" aria-label="Apresentação">
-  <div class="jr-stage">
-    <div class="scene is-on" data-img="01-escritorio" data-fallback="assets/img/hero.jpg" data-code="SP" data-alt="Consulta no escritório da TMS em Alphaville, com documentos sobre a mesa ao entardecer">
-      <div class="copy hero-copy">
-        <p class="eyebrow">Direito Internacional · Alphaville</p>
-        <h1>Mudar de país é um processo jurídico. <em>Trate como um.</em></h1>
-        <p class="sub">Vistos e cidadania para Portugal, Espanha, Irlanda e Estados Unidos, do primeiro documento ao carimbo.</p>
-        <div class="ctas"><a class="btn" href="#formulario">Analisar meu caso</a><a class="btn2" href="#destinos">Ver os destinos</a></div>
+<!-- ABERTURA: notebook 3D com o escudo; a rolagem abre a tampa e entra na tela -->
+<section class="pin" id="abertura" aria-label="Abertura" style="--len:260vh">
+  <div class="stage open-stage">
+    <p class="bg-name" aria-hidden="true">TMS</p>
+    <div class="scene3d" aria-hidden="true">
+      <div class="rig" id="rig">
+        <div class="base"><i class="keys"></i><i class="pad"></i></div>
+        <div class="base-edge"></div>
+        <div class="lid" id="lid">
+          <div class="lid-face screen"><div class="screen-img" id="screenImg"><span>Lisboa</span></div></div>
+          <div class="lid-face cover"><div class="logo3d"><img src="assets/img/escudo.jpg" alt=""></div></div>
+        </div>
       </div>
+      <i class="floor-shadow"></i>
     </div>
-    <div class="scene" data-img="02-aeroporto" data-code="GRU" data-alt="Passageira diante do vidro do terminal de Guarulhos, com um avião ao pôr do sol">
-      <div class="copy"><h2>Seu próximo carimbo começa numa mesa, <em>não num balcão.</em></h2><p class="sub">Cada visto tem regra, prazo e um jeito certo de pedir. Conferimos cada papel antes de ele sair daqui.</p></div>
+    <div class="open-copy" id="openCopy">
+      <h1>Mudar de país é um processo jurídico. <em>Trate como um.</em></h1>
+      <p>Vistos e cidadania para Portugal, Espanha, Irlanda e Estados Unidos.</p>
     </div>
-    <div class="scene" data-img="03-mundo" data-code="" data-alt="A Terra vista da órbita à noite, com as luzes do Brasil e da Europa" data-fb="Quatro destinos">
-      <div class="copy"><h2>Quatro destinos. <em>Um só escritório.</em></h2><p class="sub">Portugal, Espanha, Irlanda e Estados Unidos, conduzidos de Alphaville com o mesmo cuidado.</p></div>
-    </div>
-    <div class="scene" data-img="04-lisboa" data-code="LIS" data-city="Lisboa" data-coord="38°43′N 9°08′O" data-alt="Casal brasileiro num miradouro de Lisboa, com o elétrico amarelo e os telhados até o Tejo">
-      <div class="copy"><p class="place">Portugal</p><h2>Lisboa, para quem quer viver de renda <em>ou trabalhar de longe.</em></h2><p class="sub">D7, D8, D2 e cidadania portuguesa por descendência, com acompanhamento na AIMA.</p><a class="lnk" href="#destinos" data-country="0">Ver vistos para Portugal <span class="ic i-arrow-right"></span></a></div>
-    </div>
-    <div class="scene" data-img="05-madri" data-code="MAD" data-city="Madri" data-coord="40°25′N 3°42′O" data-alt="Profissional brasileira trabalhando com notebook num café de Madri">
-      <div class="copy"><p class="place">Espanha</p><h2>Madri, sem atalho <em>que custe o visto.</em></h2><p class="sub">Residência não lucrativa, nômade digital e estudos, com apostila e tradução no padrão do consulado.</p><a class="lnk" href="#destinos" data-country="1">Ver vistos para a Espanha <span class="ic i-arrow-right"></span></a></div>
-    </div>
-    <div class="scene" data-img="06-dublin" data-code="DUB" data-city="Dublin" data-coord="53°21′N 6°15′O" data-alt="Estudante brasileiro atravessando a Ha’penny Bridge em Dublin num fim de tarde de garoa">
-      <div class="copy"><p class="place">Irlanda</p><h2>Dublin, do Stamp 2 <em>à permissão de trabalho.</em></h2><p class="sub">Estudo, Critical Skills, General Employment Permit e cidadania irlandesa por descendência.</p><a class="lnk" href="#destinos" data-country="2">Ver vistos para a Irlanda <span class="ic i-arrow-right"></span></a></div>
-    </div>
-    <div class="scene" data-img="07-nova-york" data-code="JFK" data-city="Nova York" data-coord="40°42′N 74°00′O" data-alt="Família brasileira caminhando em Dumbo, com a Manhattan Bridge ao fundo">
-      <div class="copy"><p class="place">Estados Unidos</p><h2>Nova York, com estratégia <em>antes do formulário.</em></h2><p class="sub">F-1, L-1, O-1, E-2 e green card por EB-2 NIW ou EB-5. <span data-eua>Quando exigido, a representação perante as autoridades americanas é feita por advogado licenciado nos EUA.</span></p><a class="lnk" href="#destinos" data-country="3">Ver vistos para os EUA <span class="ic i-arrow-right"></span></a></div>
-    </div>
-    <div class="scene" data-img="08-chegada" data-code="" data-alt="Família em casa nova, desembalando caixas, em videochamada com o advogado" data-fb="Chegada">
-      <div class="copy"><h2>Todo destino começa com <em>uma análise.</em></h2><p class="sub">Com advogado responsável, 100% remota ou presencial no Edifício Metrópolis, em Alphaville.</p><div class="ctas"><a class="btn" href="#formulario">Analisar meu caso</a><a class="btn2" data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener">Falar no WhatsApp</a></div></div>
-    </div>
+    <div class="screen-fill" id="screenFill" aria-hidden="true"></div>
+  </div>
+</section>
 
-    <ol class="rail" aria-hidden="true">
-      <li>SP</li><li>GRU</li><li>LIS</li><li>MAD</li><li>DUB</li><li>JFK</li>
-    </ol>
-    <div class="jr-bar" aria-hidden="true"><i id="jrBar"></i></div>
-    <button class="jr-skip" id="skipFilm" type="button">Pular<span class="lg">apresentação</span><span class="ic i-arrow-down"></span></button>
+<!-- CIDADES: cada cidade em 3 fotos (aérea, rua, detalhe), a câmera entrando -->
+<section class="pin" id="cidades" aria-label="As cidades" style="--len:1150vh">
+  <div class="stage">
+    <div class="frame" data-img="cidades/lisboa-1" data-city="Lisboa" data-alt="Vista aérea de Lisboa, telhados e o rio Tejo">
+      <div class="copy"><p class="place">Portugal · Lisboa</p><h2>Primeiro, o destino inteiro.</h2><p>D7 para quem vive de renda, D8 para quem trabalha de longe, D2 para quem empreende.</p></div></div>
+    <div class="frame" data-img="cidades/lisboa-2" data-city="Lisboa" data-alt="Rua de Alfama com o elétrico amarelo">
+      <div class="copy"><h2>Depois, a rua onde <em>você vai morar.</em></h2><p>Residência na AIMA, NIF e NISS resolvidos antes de você precisar deles.</p></div></div>
+    <div class="frame" data-img="cidades/lisboa-3" data-city="Lisboa" data-alt="Azulejos portugueses em uma fachada de Lisboa">
+      <div class="copy"><h2>E a cidadania, <em>se o sangue permitir.</em></h2><p>Nacionalidade portuguesa por descendência, com as certidões certas desde o início.</p></div></div>
+
+    <div class="frame" data-img="cidades/madri-1" data-city="Madri" data-alt="Vista aérea de Madri e da Gran Vía">
+      <div class="copy"><p class="place">Espanha · Madri</p><h2>Madri, sem atalho <em>que custe o visto.</em></h2><p>Residência não lucrativa, nômade digital, estudos e reagrupamento familiar.</p></div></div>
+    <div class="frame" data-img="cidades/madri-2" data-city="Madri" data-alt="Plaza Mayor de Madri">
+      <div class="copy"><h2>Apostila e tradução <em>no padrão do consulado.</em></h2><p>Um papel fora do formato devolve o pedido. Conferimos cada um antes de sair daqui.</p></div></div>
+    <div class="frame" data-img="cidades/madri-3" data-city="Madri" data-alt="Detalhe de uma varanda de ferro em Madri">
+      <div class="copy"><h2>NIE, TIE e <em>empadronamiento.</em></h2><p>E, com 2 anos de residência legal, o caminho para a nacionalidade espanhola.</p></div></div>
+
+    <div class="frame" data-img="cidades/dublin-1" data-city="Dublin" data-alt="Vista aérea de Dublin e do rio Liffey">
+      <div class="copy"><p class="place">Irlanda · Dublin</p><h2>Dublin, do Stamp 2 <em>à permissão de trabalho.</em></h2><p>Estudo, Critical Skills e General Employment Permit.</p></div></div>
+    <div class="frame" data-img="cidades/dublin-2" data-city="Dublin" data-alt="Temple Bar em Dublin ao anoitecer">
+      <div class="copy"><h2>Chegar já <em>com o registro certo.</em></h2><p>IRP e PPS Number orientados antes do embarque.</p></div></div>
+    <div class="frame" data-img="cidades/dublin-3" data-city="Dublin" data-alt="Ha'penny Bridge em Dublin">
+      <div class="copy"><h2>Cidadania irlandesa <em>por descendência.</em></h2><p>Foreign Births Register, com a árvore documental montada por nós.</p></div></div>
+
+    <div class="frame" data-img="cidades/nova-york-1" data-city="Nova York" data-alt="Skyline de Manhattan">
+      <div class="copy"><p class="place">Estados Unidos · Nova York</p><h2>Nova York, com estratégia <em>antes do formulário.</em></h2><p>F-1, L-1, O-1, E-2 e green card por EB-2 NIW ou EB-5.</p></div></div>
+    <div class="frame" data-img="cidades/nova-york-2" data-city="Nova York" data-alt="Rua de Nova York com táxis amarelos">
+      <div class="copy"><h2>O visto certo <em>para o seu perfil.</em></h2><p>Estudo, transferência de empresa, talento extraordinário ou investimento.</p></div></div>
+    <div class="frame" data-img="cidades/nova-york-3" data-city="Nova York" data-alt="Ponte do Brooklyn">
+      <div class="copy"><h2>Estados Unidos <em>com quem é licenciado lá.</em></h2><p data-eua>Quando exigido, a representação perante as autoridades americanas é feita por advogado licenciado nos EUA.</p></div></div>
+
+    <ol class="rail" aria-hidden="true"><li>Lisboa</li><li>Madri</li><li>Dublin</li><li>Nova York</li></ol>
+    <div class="bar" aria-hidden="true"><i id="citiesBar"></i></div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="mq-track" id="mq"><span>Lisboa</span><span>Madri</span><span>Dublin</span><span>Nova York</span><span>Lisboa</span><span>Madri</span><span>Dublin</span><span>Nova York</span></div></div>
+
+<!-- COMO FAZEMOS: tour; cada rolagem explica uma etapa -->
+<section class="pin" id="como-fazemos" aria-labelledby="tTitle" style="--len:560vh">
+  <div class="stage tour">
+    <div class="tour-media">
+      <div class="frame" data-img="tour/1-conversa" data-alt="Casal conversando com advogado sobre documentos"></div>
+      <div class="frame" data-img="tour/2-estrategia" data-alt="Mãos analisando documentos sobre uma mesa"></div>
+      <div class="frame" data-img="tour/3-documentos" data-alt="Passaporte e documentos organizados"></div>
+      <div class="frame" data-img="tour/4-aeroporto" data-alt="Pessoa com mala olhando os aviões no aeroporto"></div>
+      <div class="frame" data-img="tour/5-chegada" data-alt="Família recebendo as chaves da casa nova"></div>
+    </div>
+    <div class="tour-text">
+      <h2 class="tour-title" id="tTitle">Como fazemos</h2>
+      <div class="tour-steps">
+        <div class="tour-step"><b>1</b><h3>Conversa</h3><p>Você conta seu objetivo e sua situação. Dizemos com clareza o que é viável e o que não é.</p></div>
+        <div class="tour-step"><b>2</b><h3>Estratégia</h3><p>Escolhemos o visto ou a via de cidadania certa para o seu perfil, com prazos e custos por escrito.</p></div>
+        <div class="tour-step"><b>3</b><h3>Documentos</h3><p>Montamos a lista exata e conferimos certidões, apostilas e traduções antes do protocolo.</p></div>
+        <div class="tour-step"><b>4</b><h3>Protocolo</h3><p>Preparamos formulários e dossiê e acompanhamos o agendamento no consulado ou no órgão competente.</p></div>
+        <div class="tour-step"><b>5</b><h3>Chegada</h3><p>Seguimos com você até a decisão e nas primeiras providências no destino.</p></div>
+      </div>
+      <ol class="tour-dots" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li></ol>
+    </div>
   </div>
 </section>
 
 <section class="sec" id="destinos" tabindex="-1" aria-labelledby="dTitle">
   <div class="wrap">
-    <h2 class="h2 rv" id="dTitle">Escolha o destino. <em>O caminho jurídico, a gente desenha.</em></h2>
+    <h2 class="h2 rv" id="dTitle">Vistos por país. <em>Escolha e a cidade abre.</em></h2>
     <div class="tabs rv" id="tabs" role="tablist" aria-label="Destinos"></div>
     <div class="dest rv" id="destPanel" role="tabpanel" aria-live="polite">
-      <figure class="dest-media" id="destMedia"></figure>
-      <div class="dest-body">
-        <div class="vg" id="vg"></div>
-        <div class="side" id="side"></div>
-      </div>
+      <figure class="dest-media" id="destMedia"><figcaption><b id="dmName"></b><span id="dmCity"></span></figcaption></figure>
+      <div class="dest-body"><div class="vg" id="vg"></div><div class="side" id="side"></div></div>
     </div>
-  </div>
-</section>
-
-<section class="sec steps-sec" id="como-funciona" aria-labelledby="cTitle">
-  <div class="wrap steps-grid">
-    <div class="steps-head">
-      <h2 class="h2 rv" id="cTitle">Quatro etapas e um advogado <em>do início ao fim.</em></h2>
-      <p class="lead rv">A análise diz se há caminho antes de qualquer protocolo. E o que não é viável, também.</p>
-      <a class="btn rv" href="#formulario">Analisar meu caso</a>
-    </div>
-    <ol class="steps" id="steps">
-      <li class="rv"><span class="ic big i-magnifying-glass"></span><h3>Análise</h3><p>Olhamos seu objetivo, seu histórico e seus documentos, e dizemos com clareza o que é viável.</p></li>
-      <li class="rv"><span class="ic big i-compass"></span><h3>Estratégia</h3><p>Escolhemos o visto ou a via de cidadania certa e montamos a lista exata de documentos, apostilas e traduções.</p></li>
-      <li class="rv"><span class="ic big i-stamp"></span><h3>Protocolo</h3><p>Preparamos formulários e dossiê, e acompanhamos o agendamento no consulado ou no órgão competente.</p></li>
-      <li class="rv"><span class="ic big i-airplane-takeoff"></span><h3>Chegada</h3><p>Seguimos com você até a decisão e nas primeiras providências no destino, como NIF, NIE ou PPS.</p></li>
-      <i class="steps-line" aria-hidden="true"><b id="stepsFill"></b></i>
-    </ol>
   </div>
 </section>
 
 <section class="sec office-sec" id="escritorio" aria-labelledby="eTitle">
-  <div class="wrap">
-    <div class="office">
-      <div>
-        <h2 class="h2 rv" id="eTitle">Advogados com nome, registro <em>e endereço.</em></h2>
-        <p class="lead rv">Sociedade de advocacia com sede no Edifício Metrópolis, em Alphaville, e atendimento remoto em todo o Brasil.</p>
-        <dl class="facts rv">
-          <div><dt>Sede</dt><dd><span data-cfg="endereco">Alameda Itapecuru, 645</span>, <span data-cfg="complemento">Edifício Metrópolis, Alphaville Industrial</span>, <span data-cfg="cidadeUF">Barueri/SP</span></dd></div>
-          <div><dt>Atendimento</dt><dd>100% remoto, ou presencial com agendamento</dd></div>
-          <div><dt>Horário</dt><dd data-cfg="horario">Segunda a sexta, das 9h às 18h</dd></div>
-          <div data-cfg-row="experiencia"><dt>Mercado</dt><dd data-cfg="experiencia">Mais de 20 anos</dd></div>
-        </dl>
-      </div>
-      <div class="people" id="people"></div>
-    </div>
+  <div class="wrap office">
+    <h2 class="h2 rv" id="eTitle">Um escritório com endereço, <em>atendendo o Brasil inteiro.</em></h2>
+    <dl class="facts rv">
+      <div><dt>Sede</dt><dd><a id="mapsLink" href="https://www.google.com/maps/search/?api=1&query=Alameda+Itapecuru+645+Barueri+SP" target="_blank" rel="noopener"><span data-cfg="endereco">Alameda Itapecuru, 645</span>, <span data-cfg="complemento">Edifício Metrópolis, Alphaville Industrial</span>, <span data-cfg="cidadeUF">Barueri/SP</span></a></dd></div>
+      <div><dt>Atendimento</dt><dd>100% remoto, ou presencial com agendamento</dd></div>
+      <div><dt>Horário</dt><dd data-cfg="horario">Segunda a sexta, das 9h às 18h</dd></div>
+      <div data-cfg-row="experiencia"><dt>Mercado</dt><dd data-cfg="experiencia">Mais de 20 anos</dd></div>
+    </dl>
     <div class="nums rv">
       <div><b>4</b><span>países: Portugal, Espanha, Irlanda e EUA</span></div>
       <div><b>100%</b><span>remoto, para todo o Brasil</span></div>
@@ -189,72 +203,40 @@
   <div class="wrap faq">
     <h2 class="h2 rv" id="fqTitle">Perguntas que ouvimos <em>toda semana.</em></h2>
     <div class="acc rv">
-      <details open><summary>Quanto tempo leva um visto para Portugal?<span class="ic i-plus"></span></summary><p>Depende do tipo de visto e da agenda do consulado. D7 e D8 costumam levar alguns meses entre juntar documentos, agendar e receber a decisão. Na análise inicial estimamos o seu prazo com base no seu caso, sem chute.</p></details>
+      <details open><summary>Quanto tempo leva um visto para Portugal?<span class="ic i-plus"></span></summary><p>Depende do tipo de visto e da agenda do consulado. D7 e D8 costumam levar alguns meses entre juntar documentos, agendar e receber a decisão. Na conversa inicial estimamos o seu prazo com base no seu caso, sem chute.</p></details>
       <details><summary>Preciso mesmo de advogado para pedir visto?<span class="ic i-plus"></span></summary><p>A lei não obriga. Mas um documento errado ou uma tradução fora do padrão pode custar a negativa e meses de espera. O advogado define a estratégia, revisa tudo antes do protocolo e acompanha até a decisão.</p></details>
       <details><summary>Tenho direito à cidadania europeia?<span class="ic i-plus"></span></summary><p>Depende da sua linha familiar e das regras de cada país, que mudam com frequência. Você manda as certidões que tiver e dizemos com clareza se existe caminho, qual é e o que falta.</p></details>
       <details><summary>Vocês atendem quem não mora em São Paulo?<span class="ic i-plus"></span></summary><p>Sim. O atendimento é 100% remoto para todo o Brasil, com reuniões por vídeo e documentos pelo WhatsApp e e-mail. Se preferir, recebemos você no Edifício Metrópolis, em Alphaville, com hora marcada.</p></details>
       <details><summary>E se o visto for negado?<span class="ic i-plus"></span></summary><p>Primeiro entendemos o motivo da negativa. Depois avaliamos recurso ou um novo pedido corrigido. Nenhum escritório sério promete aprovação. O que garantimos é um pedido bem feito.</p></details>
-      <details><summary>Quanto custa?<span class="ic i-plus"></span></summary><p>Depende do destino e do tipo de processo. Depois da análise inicial você recebe uma proposta por escrito, com tudo o que está incluso e o que é taxa do governo.</p></details>
+      <details><summary>Quanto custa?<span class="ic i-plus"></span></summary><p>Depende do destino e do tipo de processo. Depois da conversa inicial você recebe uma proposta por escrito, com tudo o que está incluso e o que é taxa do governo.</p></details>
     </div>
   </div>
 </section>
 
-<section class="sec form-sec" id="formulario" aria-labelledby="ftitle">
-  <span id="contato"></span>
-  <div class="wrap fgrid2">
-    <div>
-      <p class="eyebrow rv">Análise do caso</p>
-      <h2 class="h2 rv" id="ftitle">Conte o essencial. <em>O resto a gente pergunta.</em></h2>
-      <p class="lead rv">Leva dois minutos. A mensagem chega direto ao advogado pelo WhatsApp, já organizada.</p>
-      <dl class="info rv">
-        <div><dt>WhatsApp</dt><dd><a data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener" data-cfg="whatsappExibicao">(11) 99153-7423</a></dd></div>
-        <div data-cfg-row="email"><dt>E-mail</dt><dd><a data-mail href="mailto:advdanilomarques@gmail.com" data-cfg="email">advdanilomarques@gmail.com</a></dd></div>
-        <div><dt>Endereço</dt><dd><a id="mapsLink" href="https://www.google.com/maps/search/?api=1&query=Alameda+Itapecuru+645+Barueri+SP" target="_blank" rel="noopener"><span data-cfg="endereco">Alameda Itapecuru, 645</span>, Alphaville. Ver no mapa</a></dd></div>
-        <div><dt>Horário</dt><dd data-cfg="horario">Segunda a sexta, das 9h às 18h</dd></div>
-      </dl>
-    </div>
-    <form class="fform rv" id="leadForm" novalidate>
-      <label>Nome completo<input name="nome" autocomplete="name" required></label>
-      <label>WhatsApp<input name="telefone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="(11) 90000-0000"></label>
-      <label class="full">E-mail <small>(opcional)</small><input name="email" type="email" autocomplete="email" placeholder="voce@email.com"></label>
-      <label>Destino
-        <select name="destino" id="fDestino" required>
-          <option value="">Escolha</option>
-          <option>Portugal</option><option>Espanha</option><option>Irlanda</option><option>Estados Unidos</option><option>Ainda não sei</option>
-        </select>
-      </label>
-      <label>Objetivo
-        <select name="objetivo" required>
-          <option value="">Escolha</option>
-          <option>Morar / residência</option><option>Trabalhar</option><option>Estudar</option><option>Investir ou empreender</option><option>Cidadania por descendência</option><option>Reagrupamento familiar</option><option>Recurso de visto negado</option><option>Outro</option>
-        </select>
-      </label>
-      <label class="full">Sua situação hoje<textarea name="mensagem" placeholder="Ex.: sou aposentado, tenho renda de aluguel e quero morar em Portugal com minha esposa no ano que vem."></textarea></label>
-      <label class="hp" aria-hidden="true">Não preencha<input name="_gotcha" tabindex="-1" autocomplete="off"></label>
-      <label class="ck full"><input type="checkbox" name="lgpd" required><span>Autorizo o uso destes dados só para a TMS responder a este contato, conforme a <a href="privacidade.html" target="_blank">Política de Privacidade</a>.</span></label>
-      <div class="row"><button class="btn" type="submit">Enviar para análise</button><span class="fmsg" id="fMsg" role="status" aria-live="polite"></span></div>
-    </form>
-  </div>
+<section class="final" id="contato" aria-labelledby="cTitle">
+  <p class="bg-name" aria-hidden="true">TMS</p>
+  <h2 class="rv" id="cTitle">Seu próximo endereço <em>começa numa conversa.</em></h2>
+  <a class="wa-big rv" data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp com a TMS"><span class="ic i-whatsapp-logo"></span></a>
 </section>
 </main>
 
 <footer>
   <div class="wrap">
     <div class="fgrid">
-      <div><img src="assets/img/escudo.jpg" alt="" width="44" height="50" loading="lazy" class="flogo"><p><span data-cfg="endereco">Alameda Itapecuru, 645</span><br><span data-cfg="complemento">Edifício Metrópolis, Alphaville Industrial</span><br><span data-cfg="cidadeUF">Barueri/SP</span>, CEP <span data-cfg="cep">06454-080</span></p></div>
-      <div><h4>Navegação</h4><a href="#destinos">Destinos</a><a href="#como-funciona">Como funciona</a><a href="#escritorio">Escritório</a><a href="#faq">Perguntas</a></div>
+      <div><img src="assets/img/escudo.jpg" alt="TMS Advogados Associados" width="44" height="50" loading="lazy" class="flogo"><p>TMS Advogados Associados<br><span data-cfg="endereco">Alameda Itapecuru, 645</span>, <span data-cfg="complemento">Edifício Metrópolis, Alphaville Industrial</span><br><span data-cfg="cidadeUF">Barueri/SP</span>, CEP <span data-cfg="cep">06454-080</span></p></div>
+      <div><h4>Navegação</h4><a href="#cidades">Cidades</a><a href="#como-fazemos">Como fazemos</a><a href="#destinos">Vistos por país</a><a href="#faq">Perguntas</a></div>
       <div><h4>Legal</h4><a href="privacidade.html">Política de Privacidade</a><a href="privacidade.html#cookies">Cookies</a><a href="termos.html">Termos de Uso</a></div>
       <div><h4>Contato</h4><a data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener">WhatsApp <span data-cfg="whatsappExibicao">(11) 99153-7423</span></a><a data-mail href="mailto:advdanilomarques@gmail.com" data-cfg="email">advdanilomarques@gmail.com</a></div>
     </div>
     <div class="legal">
       <span>© <span id="year">2026</span> TMS Advogados Associados<span id="regs"></span></span>
-      <span>Conteúdo informativo, conforme o Provimento 205/2021 do CFOAB. Não há promessa de resultado. Imagens de pessoas e cidades são ilustrativas.</span>
+      <span>Conteúdo informativo, conforme o Provimento 205/2021 do CFOAB. Não há promessa de resultado. Pessoas nas fotos são ilustrativas.</span>
     </div>
   </div>
 </footer>
 
-<div class="mbar"><a class="btn" href="#formulario">Analisar meu caso</a><a class="btn2" data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><span class="ic i-whatsapp-logo"></span></a></div>
-<a class="fab" id="fab" data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><span class="ic i-whatsapp-logo"></span></a>
+<a class="fab" id="fab" data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp"><span class="ic i-whatsapp-logo"></span></a>
+<div class="grain" aria-hidden="true"></div>
 
 <script src="assets/js/config.js"></script>
 <script src="assets/vendor/lenis.min.js" defer></script>

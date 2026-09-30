@@ -1,5 +1,0 @@
-Fotos da equipe (aparecem automaticamente no site):
-  danilo.jpg  e  edmar.jpg
-Formato retrato 4:5 (ex.: 1200x1500 px), rosto no terço superior, até ~250 KB.
-Enquanto o arquivo não existir, o site mostra o monograma dourado (DM / ET).
-Para trocar nomes/arquivos, edite assets/js/config.js.

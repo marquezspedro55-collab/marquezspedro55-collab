@@ -1,5 +1,0 @@
-Fotos da jornada (prompts em docs/PROMPTS-IMAGENS.md):
-  01-escritorio  02-aeroporto  03-mundo  04-lisboa  05-madri  06-dublin  07-nova-york  08-chegada
-Computador: <nome>.jpg (horizontal 3:2).  Celular (opcional): <nome>-m.jpg (vertical 2:3).
-Sem o arquivo, a cena aparece em modo tipográfico. As fotos de Lisboa, Madri, Dublin e Nova York
-também aparecem na seção Destinos.
