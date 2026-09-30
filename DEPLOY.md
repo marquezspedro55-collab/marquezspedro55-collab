@@ -17,12 +17,10 @@ Edite **`site/assets/js/config.js`**. É o único arquivo com dados do escritór
 
 Depois troque **`SEU-DOMINIO.com.br`** pelo domínio real em `site/index.html`, `site/robots.txt` e `site/sitemap.xml`.
 
-### Fotos (opcionais, aparecem sozinhas quando o arquivo existe)
-- `site/assets/img/equipe/danilo.jpg` e `edmar.jpg` (retrato 4:5). Sem foto, aparece o monograma.
-- `site/assets/img/cidades/lisboa.jpg`, `madri.jpg`, `dublin.jpg`, `nova-york.jpg` (4:3).
-- `site/assets/img/aeroporto.jpg` (1920x1080).
-
-Use só imagens com licença (ex.: Adobe Stock).
+### Fotos (aparecem sozinhas quando o arquivo existe)
+- Jornada e destinos: `site/assets/img/cenas/` (8 cenas; nomes e prompts em `docs/PROMPTS-IMAGENS.md`).
+- Sócios: `site/assets/img/equipe/danilo.jpg` e `edmar.jpg` (retrato 4:5, **foto real**). Sem foto, aparece o monograma.
+- Vídeos opcionais: `site/assets/video/<nome da cena>.mp4` e depois `videos: true` no `config.js`.
 
 ## 2. Publicar
 

@@ -18,16 +18,10 @@
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/img/escudo.jpg">
 <link rel="manifest" href="site.webmanifest">
-<link rel="preload" as="image" href="assets/img/hero.jpg" fetchpriority="high">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Mono:wght@400;500&display=swap">
+<link rel="preload" href="assets/fonts/cormorant.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/main.css">
-<noscript><style>
-  #film{height:auto}.stage{position:relative;height:auto;min-height:100vh;padding-bottom:40px}
-  #heroLayer{position:relative;height:70vh}.scrim,#airport,#gl,.pp-wrap,#cityCard,.glab,.route,.bar,.skipfilm,.menu-btn{display:none}
-  .chap{position:relative;left:auto;top:auto;bottom:auto;opacity:1!important;margin:40px clamp(20px,6vw,100px)}
-</style></noscript>
+<noscript><style>.jr{height:auto!important}.jr-stage{position:relative;height:auto}.scene{position:relative!important;opacity:1!important;min-height:100vh}.scene .copy{opacity:1!important;transform:none!important}.rail,.jr-skip{display:none}.rv{opacity:1!important;transform:none!important}</style></noscript>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -75,187 +69,115 @@
 <body>
 <a class="skip" href="#destinos">Pular para o conteúdo</a>
 
-<header class="top">
-  <a class="brand" href="#film" aria-label="TMS Advogados Associados, início"><img src="assets/img/escudo.jpg" alt="" width="34" height="38"><span><b>TMS</b><small>ADVOGADOS ASSOCIADOS</small></span></a>
+<header class="top" id="top">
+  <a class="brand" href="#top" aria-label="TMS Advogados Associados, início"><img src="assets/img/escudo.jpg" alt="" width="34" height="38"><span><b>TMS</b><small>Advogados Associados</small></span></a>
   <nav class="links" aria-label="Principal">
-    <a href="#destinos">Destinos</a><a href="#como-funciona">Como funciona</a><a href="#faq">Perguntas</a><a href="#escritorio">Escritório</a><a href="#contato">Contato</a>
+    <a href="#destinos">Destinos</a><a href="#como-funciona">Como funciona</a><a href="#escritorio">Escritório</a><a href="#faq">Perguntas</a><a href="#formulario">Contato</a>
   </nav>
   <div class="hdr-r">
     <a class="btn hdr-cta" href="#formulario">Analisar meu caso</a>
-    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu">MENU</button>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><span class="ic i-list"></span></button>
   </div>
 </header>
 
-<div class="mnu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
-  <div class="mnu-bg" data-close></div>
-  <button class="btn2 mclose" type="button" data-close>Fechar</button>
-  <div class="mbook">
-    <nav class="mpage" aria-label="Menu">
-      <a class="mlink" href="#destinos" data-close>Destinos<span>PT · ES · IE · US</span></a>
-      <a class="mlink" href="#como-funciona" data-close>Como funciona<span>I a IV</span></a>
-      <a class="mlink" href="#faq" data-close>Perguntas<span>O LIVRO</span></a>
-      <a class="mlink" href="#escritorio" data-close>Escritório<span>ALPHAVILLE</span></a>
-      <a class="mlink" href="#formulario" data-close>Contato<span>ANÁLISE</span></a>
-    </nav>
-    <div class="mcover" aria-hidden="true">
-      <div class="mface mfront"><img src="assets/img/escudo.jpg" alt=""><b class="disp" style="color:var(--gold);letter-spacing:.3em;font-size:22px">TMS</b><span class="mono" style="font-size:9px;letter-spacing:.3em;color:var(--gold)">PASSAPORTE DE ACESSO</span></div>
-      <div class="mface minner">
-        <span class="disp" style="font-size:20px;line-height:1.3">Vistos e cidadania para Portugal, Espanha, Irlanda e Estados Unidos.</span>
-        <div style="display:flex;flex-direction:column;gap:12px"><a class="btn" data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener" tabindex="-1">Falar no WhatsApp</a><span style="font-size:14px;color:#4F4230"><span data-cfg="endereco">Alameda Itapecuru, 645</span><br>Alphaville, <span data-cfg="cidadeUF">Barueri/SP</span></span></div>
-      </div>
-    </div>
-  </div>
+<div class="mnu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <button class="mclose" type="button" data-close aria-label="Fechar menu"><span class="ic i-x"></span></button>
+  <nav aria-label="Menu">
+    <a href="#destinos" data-close>Destinos</a><a href="#como-funciona" data-close>Como funciona</a><a href="#escritorio" data-close>Escritório</a><a href="#faq" data-close>Perguntas</a><a href="#formulario" data-close>Contato</a>
+  </nav>
+  <a class="btn" data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener">Falar no WhatsApp</a>
 </div>
 
 <main>
-<section id="film" aria-label="Apresentação">
-  <div class="stage">
-    <div id="heroLayer"><img id="heroImg" src="assets/img/hero.jpg" width="2400" height="1350" fetchpriority="high" alt="Escudo e logotipo da TMS Advogados Associados, Direito Internacional, em dourado sobre mármore escuro"></div>
-    <div id="airport" aria-hidden="true">
-      <div class="slot" id="airPhoto"></div>
-      <div id="visaWrap"><canvas id="visaBig" width="1400" height="900"></canvas><div class="holo" id="holo"></div></div>
-    </div>
-    <canvas id="gl" aria-hidden="true"></canvas>
-    <div class="scrim"></div>
-
-    <span class="glab" id="l0" aria-hidden="true">GRU · São Paulo</span>
-    <span class="glab" id="l1" aria-hidden="true">LIS · Lisboa</span>
-    <span class="glab" id="l2" aria-hidden="true">MAD · Madri</span>
-    <span class="glab" id="l3" aria-hidden="true">DUB · Dublin</span>
-    <span class="glab" id="l4" aria-hidden="true">JFK · Nova York</span>
-
-    <div id="cityCard" aria-hidden="true"><div class="pc" id="pc"><i>SELO</i><b id="pcCity">Lisboa</b><span id="pcCoord">38°43′N · 9°08′O</span></div></div>
-
-    <div class="pp-wrap" id="ppWrap" aria-hidden="true">
-      <div class="pp" id="pp">
-        <div class="pp-back"></div>
-        <div class="pp-page"><canvas id="ppCanvas" width="480" height="680"></canvas></div>
-        <div class="pp-cover" id="ppCover">
-          <div class="pp-face pp-front"><b>PASSAPORTE</b><img src="assets/img/escudo.jpg" alt=""><small>TMS · DIREITO INTERNACIONAL</small></div>
-          <div class="pp-face pp-inner"></div>
-        </div>
+<!-- JORNADA: cada cena usa a foto assets/img/cenas/<data-img>.jpg (e -m.jpg no celular) -->
+<section class="jr" id="jornada" aria-label="Apresentação">
+  <div class="jr-stage">
+    <div class="scene is-on" data-img="01-escritorio" data-fallback="assets/img/hero.jpg" data-code="SP" data-alt="Consulta no escritório da TMS em Alphaville, com documentos sobre a mesa ao entardecer">
+      <div class="copy hero-copy">
+        <p class="eyebrow">Direito Internacional · Alphaville</p>
+        <h1>Mudar de país é um processo jurídico. <em>Trate como um.</em></h1>
+        <p class="sub">Vistos e cidadania para Portugal, Espanha, Irlanda e Estados Unidos, do primeiro documento ao carimbo.</p>
+        <div class="ctas"><a class="btn" href="#formulario">Analisar meu caso</a><a class="btn2" href="#destinos">Ver os destinos</a></div>
       </div>
     </div>
-
-    <div class="chap hero" id="ch0">
-      <div class="kick fd">TMS ADVOGADOS ASSOCIADOS · DIREITO INTERNACIONAL</div>
-      <h1 data-split>Mudar de país é um processo jurídico. <em>Trate como <span class="mk">um.</span></em></h1>
-      <p class="fd">Cuidamos do seu visto e da sua cidadania em Portugal, Espanha, Irlanda e Estados Unidos, do primeiro documento ao carimbo.</p>
-      <div class="fd" style="display:flex;gap:18px;flex-wrap:wrap;align-items:center"><a class="btn" href="#formulario">Analisar meu caso</a><a class="btn2" href="#destinos">Ver os destinos</a></div>
+    <div class="scene" data-img="02-aeroporto" data-code="GRU" data-alt="Passageira diante do vidro do terminal de Guarulhos, com um avião ao pôr do sol">
+      <div class="copy"><h2>Seu próximo carimbo começa numa mesa, <em>não num balcão.</em></h2><p class="sub">Cada visto tem regra, prazo e um jeito certo de pedir. Conferimos cada papel antes de ele sair daqui.</p></div>
     </div>
-    <div class="chap" id="ch1">
-      <h2 data-split>Seu próximo carimbo <em>começa aqui.</em></h2>
-      <p class="fd">Cada visto tem regra, prazo e um jeito certo de pedir. Conhecemos o dos quatro países e conferimos cada papel antes de ele sair daqui.</p>
+    <div class="scene" data-img="03-mundo" data-code="" data-alt="A Terra vista da órbita à noite, com as luzes do Brasil e da Europa" data-fb="Quatro destinos">
+      <div class="copy"><h2>Quatro destinos. <em>Um só escritório.</em></h2><p class="sub">Portugal, Espanha, Irlanda e Estados Unidos, conduzidos de Alphaville com o mesmo cuidado.</p></div>
     </div>
-    <div class="chap" id="ch2">
-      <h2 data-split>Quatro destinos. <em>Um só <span class="mk ring">escritório.</span></em></h2>
-      <p class="fd">Portugal, Espanha, Irlanda e Estados Unidos, conduzidos de Alphaville com o mesmo cuidado.</p>
+    <div class="scene" data-img="04-lisboa" data-code="LIS" data-city="Lisboa" data-coord="38°43′N 9°08′O" data-alt="Casal brasileiro num miradouro de Lisboa, com o elétrico amarelo e os telhados até o Tejo">
+      <div class="copy"><p class="place">Portugal</p><h2>Lisboa, para quem quer viver de renda <em>ou trabalhar de longe.</em></h2><p class="sub">D7, D8, D2 e cidadania portuguesa por descendência, com acompanhamento na AIMA.</p><a class="lnk" href="#destinos" data-country="0">Ver vistos para Portugal <span class="ic i-arrow-right"></span></a></div>
     </div>
-    <div class="chap alt" id="ch3">
-      <h2 data-split>Portugal, com o pedido certo desde o <em>primeiro documento.</em></h2>
-      <p class="fd">D1, D2, D3, D7 e D8, residência na AIMA, NIF, NISS e cidadania portuguesa por descendência.</p>
-      <a class="fd" href="#destinos" data-country="0">Ver vistos para Portugal</a>
+    <div class="scene" data-img="05-madri" data-code="MAD" data-city="Madri" data-coord="40°25′N 3°42′O" data-alt="Profissional brasileira trabalhando com notebook num café de Madri">
+      <div class="copy"><p class="place">Espanha</p><h2>Madri, sem atalho <em>que custe o visto.</em></h2><p class="sub">Residência não lucrativa, nômade digital e estudos, com apostila e tradução no padrão do consulado.</p><a class="lnk" href="#destinos" data-country="1">Ver vistos para a Espanha <span class="ic i-arrow-right"></span></a></div>
     </div>
-    <div class="chap alt" id="ch4">
-      <h2 data-split>Espanha, sem atalho que <em>custe o visto.</em></h2>
-      <p class="fd">Residência não lucrativa, nômade digital, estudos e reagrupamento familiar, com apostila e tradução no padrão do consulado.</p>
-      <a class="fd" href="#destinos" data-country="1">Ver vistos para a Espanha</a>
+    <div class="scene" data-img="06-dublin" data-code="DUB" data-city="Dublin" data-coord="53°21′N 6°15′O" data-alt="Estudante brasileiro atravessando a Ha’penny Bridge em Dublin num fim de tarde de garoa">
+      <div class="copy"><p class="place">Irlanda</p><h2>Dublin, do Stamp 2 <em>à permissão de trabalho.</em></h2><p class="sub">Estudo, Critical Skills, General Employment Permit e cidadania irlandesa por descendência.</p><a class="lnk" href="#destinos" data-country="2">Ver vistos para a Irlanda <span class="ic i-arrow-right"></span></a></div>
     </div>
-    <div class="chap alt" id="ch5">
-      <h2 data-split>Irlanda, do Stamp 2 à <em>permissão de trabalho.</em></h2>
-      <p class="fd">Estudo, Critical Skills, General Employment Permit, reagrupamento familiar e cidadania por descendência.</p>
-      <a class="fd" href="#destinos" data-country="2">Ver vistos para a Irlanda</a>
+    <div class="scene" data-img="07-nova-york" data-code="JFK" data-city="Nova York" data-coord="40°42′N 74°00′O" data-alt="Família brasileira caminhando em Dumbo, com a Manhattan Bridge ao fundo">
+      <div class="copy"><p class="place">Estados Unidos</p><h2>Nova York, com estratégia <em>antes do formulário.</em></h2><p class="sub">F-1, L-1, O-1, E-2 e green card por EB-2 NIW ou EB-5. <span data-eua>Quando exigido, a representação perante as autoridades americanas é feita por advogado licenciado nos EUA.</span></p><a class="lnk" href="#destinos" data-country="3">Ver vistos para os EUA <span class="ic i-arrow-right"></span></a></div>
     </div>
-    <div class="chap alt" id="ch6">
-      <h2 data-split>Estados Unidos, com estratégia <em>antes do formulário.</em></h2>
-      <p class="fd">F-1, L-1, O-1, E-2 e green card por EB-2 NIW ou EB-5. <span data-eua>Quando o processo exige, a representação perante as autoridades americanas é feita por advogado licenciado nos EUA.</span></p>
-      <a class="fd" href="#destinos" data-country="3">Ver vistos para os EUA</a>
-    </div>
-    <div class="chap" id="ch7">
-      <h2 data-split>Todo destino começa na <em>mesma <span class="mk">mesa.</span></em></h2>
-      <p class="fd">Análise com advogado responsável, 100% remota ou presencial no Edifício Metrópolis, em Alphaville.</p>
-      <div class="fd" style="display:flex;gap:16px;flex-wrap:wrap"><a class="btn" href="#formulario">Analisar meu caso</a><a class="btn2" data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener">Falar no WhatsApp</a></div>
+    <div class="scene" data-img="08-chegada" data-code="" data-alt="Família em casa nova, desembalando caixas, em videochamada com o advogado" data-fb="Chegada">
+      <div class="copy"><h2>Todo destino começa com <em>uma análise.</em></h2><p class="sub">Com advogado responsável, 100% remota ou presencial no Edifício Metrópolis, em Alphaville.</p><div class="ctas"><a class="btn" href="#formulario">Analisar meu caso</a><a class="btn2" data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener">Falar no WhatsApp</a></div></div>
     </div>
 
-    <div class="route" aria-hidden="true">
-      <span class="stop" id="r0" data-on="1"><i></i>GRU</span><span class="seg"></span>
-      <span class="stop" id="r1"><i></i>LIS</span><span class="seg"></span>
-      <span class="stop" id="r2"><i></i>MAD</span><span class="seg"></span>
-      <span class="stop" id="r3"><i></i>DUB</span><span class="seg"></span>
-      <span class="stop" id="r4"><i></i>JFK</span><span class="seg"></span>
-      <span class="stop" id="r5"><i></i>GRU</span>
-    </div>
-    <button class="skipfilm" id="skipFilm" type="button" aria-label="Pular apresentação">Pular<span class="lg"> apresentação</span> ↓</button>
-    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+    <ol class="rail" aria-hidden="true">
+      <li>SP</li><li>GRU</li><li>LIS</li><li>MAD</li><li>DUB</li><li>JFK</li>
+    </ol>
+    <div class="jr-bar" aria-hidden="true"><i id="jrBar"></i></div>
+    <button class="jr-skip" id="skipFilm" type="button">Pular<span class="lg">apresentação</span><span class="ic i-arrow-down"></span></button>
   </div>
 </section>
 
-<section class="sec marble" id="destinos" tabindex="-1">
+<section class="sec" id="destinos" tabindex="-1" aria-labelledby="dTitle">
   <div class="wrap">
-    <div class="rw" style="max-width:780px">
-      <h2 data-split>Escolha o destino. O caminho jurídico, <em>a gente <span class="mk">desenha.</span></em></h2>
-      <p class="lead fd">Escolha um cartão de embarque. Cada país tem a própria lógica de visto, prazo e documento.</p>
-    </div>
-    <div class="passes" id="passes" role="tablist" aria-label="Destinos"></div>
-    <div class="dgrid" id="destPanel" role="tabpanel" aria-live="polite">
-      <div class="vg" id="vg"></div>
-      <div class="side" id="side"></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="como-funciona" style="background:var(--bg2)">
-  <div class="wrap">
-    <div class="rw">
-      <div class="kick fd">COMO FUNCIONA</div>
-      <h2 data-split>Quatro etapas e um advogado <em>do início ao fim.</em></h2>
-    </div>
-    <div class="tags" role="list">
-      <svg class="string" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 8 C 180 40, 320 46, 500 30 S 820 10, 1000 36" fill="none" stroke="#8C6E3C" stroke-width="2"/></svg>
-      <div class="tag" role="listitem"><div class="rn" aria-hidden="true">I</div><h3>Análise</h3><p>Olhamos seu objetivo, seu histórico e seus papéis, e dizemos o que é viável. E o que não é, também.</p></div>
-      <div class="tag" role="listitem"><div class="rn" aria-hidden="true">II</div><h3>Estratégia</h3><p>Escolhemos o visto ou a via de cidadania certa e montamos a lista exata de documentos, apostilas e traduções.</p></div>
-      <div class="tag" role="listitem"><div class="rn" aria-hidden="true">III</div><h3>Protocolo</h3><p>Preparamos formulários e dossiê, e acompanhamos o agendamento no consulado ou no órgão competente.</p></div>
-      <div class="tag" role="listitem"><div class="rn" aria-hidden="true">IV</div><h3>Chegada</h3><p>Seguimos com você até a decisão e nas primeiras providências no destino, como NIF, NIE ou PPS.</p></div>
-    </div>
-    <div style="margin-top:56px;display:flex;gap:22px;flex-wrap:wrap;align-items:center"><a class="btn" href="#formulario">Analisar meu caso</a><span style="color:var(--ink2)">A análise diz se há caminho antes de qualquer protocolo.</span></div>
-  </div>
-</section>
-
-<section class="sec marble" id="faq">
-  <div class="wrap">
-    <div class="rw" style="max-width:760px">
-      <h2 data-split>Perguntas que ouvimos <em>toda semana.</em></h2>
-      <p class="lead fd">Escolha uma. A resposta vem de quem cuida do seu caso.</p>
-    </div>
-    <div class="faq">
-      <div class="binder" id="binder" role="tablist" aria-label="Perguntas frequentes"></div>
-      <div class="book" id="book">
-        <div class="bk" id="bk" role="tabpanel" aria-live="polite">
-          <div class="pg l" id="pgL"></div>
-          <div class="pg r" id="pgR"></div>
-        </div>
+    <h2 class="h2 rv" id="dTitle">Escolha o destino. <em>O caminho jurídico, a gente desenha.</em></h2>
+    <div class="tabs rv" id="tabs" role="tablist" aria-label="Destinos"></div>
+    <div class="dest rv" id="destPanel" role="tabpanel" aria-live="polite">
+      <figure class="dest-media" id="destMedia"></figure>
+      <div class="dest-body">
+        <div class="vg" id="vg"></div>
+        <div class="side" id="side"></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="sec" id="escritorio" style="background:var(--bg2)">
+<section class="sec steps-sec" id="como-funciona" aria-labelledby="cTitle">
+  <div class="wrap steps-grid">
+    <div class="steps-head">
+      <h2 class="h2 rv" id="cTitle">Quatro etapas e um advogado <em>do início ao fim.</em></h2>
+      <p class="lead rv">A análise diz se há caminho antes de qualquer protocolo. E o que não é viável, também.</p>
+      <a class="btn rv" href="#formulario">Analisar meu caso</a>
+    </div>
+    <ol class="steps" id="steps">
+      <li class="rv"><span class="ic big i-magnifying-glass"></span><h3>Análise</h3><p>Olhamos seu objetivo, seu histórico e seus documentos, e dizemos com clareza o que é viável.</p></li>
+      <li class="rv"><span class="ic big i-compass"></span><h3>Estratégia</h3><p>Escolhemos o visto ou a via de cidadania certa e montamos a lista exata de documentos, apostilas e traduções.</p></li>
+      <li class="rv"><span class="ic big i-stamp"></span><h3>Protocolo</h3><p>Preparamos formulários e dossiê, e acompanhamos o agendamento no consulado ou no órgão competente.</p></li>
+      <li class="rv"><span class="ic big i-airplane-takeoff"></span><h3>Chegada</h3><p>Seguimos com você até a decisão e nas primeiras providências no destino, como NIF, NIE ou PPS.</p></li>
+      <i class="steps-line" aria-hidden="true"><b id="stepsFill"></b></i>
+    </ol>
+  </div>
+</section>
+
+<section class="sec office-sec" id="escritorio" aria-labelledby="eTitle">
   <div class="wrap">
     <div class="office">
-      <div class="rw">
-        <h2 data-split>Advogados com nome, registro <em>e endereço.</em></h2>
-        <p class="lead fd">TMS Advogados Associados é uma sociedade de advocacia com sede no Edifício Metrópolis, em Alphaville, e atendimento remoto em todo o Brasil.</p>
-        <div class="facts fd">
-          <div><b>Sede</b><span><span data-cfg="endereco">Alameda Itapecuru, 645</span>, <span data-cfg="complemento">Edifício Metrópolis, Alphaville Industrial</span>, <span data-cfg="cidadeUF">Barueri/SP</span>, CEP <span data-cfg="cep">06454-080</span></span></div>
-          <div><b>Atendimento</b><span>100% remoto, ou presencial com agendamento</span></div>
-          <div><b>Horário</b><span data-cfg="horario">Segunda a sexta, das 9h às 18h</span></div>
-          <div data-cfg-row="experiencia"><b>Mercado</b><span data-cfg="experiencia">Mais de 20 anos</span></div>
-        </div>
+      <div>
+        <h2 class="h2 rv" id="eTitle">Advogados com nome, registro <em>e endereço.</em></h2>
+        <p class="lead rv">Sociedade de advocacia com sede no Edifício Metrópolis, em Alphaville, e atendimento remoto em todo o Brasil.</p>
+        <dl class="facts rv">
+          <div><dt>Sede</dt><dd><span data-cfg="endereco">Alameda Itapecuru, 645</span>, <span data-cfg="complemento">Edifício Metrópolis, Alphaville Industrial</span>, <span data-cfg="cidadeUF">Barueri/SP</span></dd></div>
+          <div><dt>Atendimento</dt><dd>100% remoto, ou presencial com agendamento</dd></div>
+          <div><dt>Horário</dt><dd data-cfg="horario">Segunda a sexta, das 9h às 18h</dd></div>
+          <div data-cfg-row="experiencia"><dt>Mercado</dt><dd data-cfg="experiencia">Mais de 20 anos</dd></div>
+        </dl>
       </div>
       <div class="people" id="people"></div>
     </div>
-    <div class="nums fd" id="nums">
-      <div><b>4</b><span>países atendidos: Portugal, Espanha, Irlanda e EUA</span></div>
+    <div class="nums rv">
+      <div><b>4</b><span>países: Portugal, Espanha, Irlanda e EUA</span></div>
       <div><b>100%</b><span>remoto, para todo o Brasil</span></div>
       <div><b>1</b><span>advogado responsável do início ao fim</span></div>
       <div><b>0</b><span>promessa de resultado. Só pedido bem feito</span></div>
@@ -263,39 +185,38 @@
   </div>
 </section>
 
-<section class="sec marble" id="contato">
-  <div class="wrap contact">
-    <div class="rw">
-      <h2 data-split>Seu próximo endereço começa com uma <em><span class="mk">análise.</span></em></h2>
-      <p class="lead fd">Conte seu objetivo e sua situação de hoje. Um advogado da TMS responde com os caminhos que fazem sentido, e com os que não recomendamos.</p>
-      <div class="fd" style="margin-top:30px;display:flex;gap:14px;flex-wrap:wrap"><a class="btn" href="#formulario">Analisar meu caso</a><a class="btn2" data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener">Falar no WhatsApp</a></div>
-    </div>
-    <div class="cardStage" id="cardStage" aria-hidden="true">
-      <div class="card" id="card">
-        <div class="cf front"><img src="assets/img/escudo.jpg" alt=""><div><b>TMS</b><small>ADVOGADOS ASSOCIADOS</small><span>WhatsApp <span data-cfg="whatsappExibicao">(11) 99153-7423</span></span><span data-cfg="email">advdanilomarques@gmail.com</span><span><span data-cfg="endereco">Alameda Itapecuru, 645</span> · Alphaville</span></div></div>
-        <div class="cf back" id="cardBack"><span class="mono" style="font-size:10px;letter-spacing:.2em;color:#7A5A2A">VISTOS · CIDADANIA · DIREITO INTERNACIONAL</span></div>
-      </div>
+<section class="sec faq-sec" id="faq" aria-labelledby="fqTitle">
+  <div class="wrap faq">
+    <h2 class="h2 rv" id="fqTitle">Perguntas que ouvimos <em>toda semana.</em></h2>
+    <div class="acc rv">
+      <details open><summary>Quanto tempo leva um visto para Portugal?<span class="ic i-plus"></span></summary><p>Depende do tipo de visto e da agenda do consulado. D7 e D8 costumam levar alguns meses entre juntar documentos, agendar e receber a decisão. Na análise inicial estimamos o seu prazo com base no seu caso, sem chute.</p></details>
+      <details><summary>Preciso mesmo de advogado para pedir visto?<span class="ic i-plus"></span></summary><p>A lei não obriga. Mas um documento errado ou uma tradução fora do padrão pode custar a negativa e meses de espera. O advogado define a estratégia, revisa tudo antes do protocolo e acompanha até a decisão.</p></details>
+      <details><summary>Tenho direito à cidadania europeia?<span class="ic i-plus"></span></summary><p>Depende da sua linha familiar e das regras de cada país, que mudam com frequência. Você manda as certidões que tiver e dizemos com clareza se existe caminho, qual é e o que falta.</p></details>
+      <details><summary>Vocês atendem quem não mora em São Paulo?<span class="ic i-plus"></span></summary><p>Sim. O atendimento é 100% remoto para todo o Brasil, com reuniões por vídeo e documentos pelo WhatsApp e e-mail. Se preferir, recebemos você no Edifício Metrópolis, em Alphaville, com hora marcada.</p></details>
+      <details><summary>E se o visto for negado?<span class="ic i-plus"></span></summary><p>Primeiro entendemos o motivo da negativa. Depois avaliamos recurso ou um novo pedido corrigido. Nenhum escritório sério promete aprovação. O que garantimos é um pedido bem feito.</p></details>
+      <details><summary>Quanto custa?<span class="ic i-plus"></span></summary><p>Depende do destino e do tipo de processo. Depois da análise inicial você recebe uma proposta por escrito, com tudo o que está incluso e o que é taxa do governo.</p></details>
     </div>
   </div>
 </section>
 
-<section class="sec formsec" id="formulario" aria-labelledby="ftitle">
+<section class="sec form-sec" id="formulario" aria-labelledby="ftitle">
+  <span id="contato"></span>
   <div class="wrap fgrid2">
-    <div class="rw">
-      <div class="kick fd">ANÁLISE DO CASO</div>
-      <h2 id="ftitle" data-split>Conte o essencial. <em>O resto a gente pergunta.</em></h2>
-      <p class="lead fd">Leva dois minutos. A mensagem chega direto ao advogado pelo WhatsApp, já organizada.</p>
-      <div class="info fd">
-        <div><b>WhatsApp</b><a data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener" data-cfg="whatsappExibicao">(11) 99153-7423</a></div>
-        <div data-cfg-row="email"><b>E-mail</b><a data-mail href="mailto:advdanilomarques@gmail.com" data-cfg="email">advdanilomarques@gmail.com</a></div>
-        <div><b>Endereço</b><a id="mapsLink" href="https://www.google.com/maps/search/?api=1&query=Alameda+Itapecuru+645+Barueri+SP" target="_blank" rel="noopener"><span data-cfg="endereco">Alameda Itapecuru, 645</span>, Alphaville · ver no mapa</a></div>
-        <div><b>Horário</b><span data-cfg="horario">Segunda a sexta, das 9h às 18h</span></div>
-      </div>
+    <div>
+      <p class="eyebrow rv">Análise do caso</p>
+      <h2 class="h2 rv" id="ftitle">Conte o essencial. <em>O resto a gente pergunta.</em></h2>
+      <p class="lead rv">Leva dois minutos. A mensagem chega direto ao advogado pelo WhatsApp, já organizada.</p>
+      <dl class="info rv">
+        <div><dt>WhatsApp</dt><dd><a data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener" data-cfg="whatsappExibicao">(11) 99153-7423</a></dd></div>
+        <div data-cfg-row="email"><dt>E-mail</dt><dd><a data-mail href="mailto:advdanilomarques@gmail.com" data-cfg="email">advdanilomarques@gmail.com</a></dd></div>
+        <div><dt>Endereço</dt><dd><a id="mapsLink" href="https://www.google.com/maps/search/?api=1&query=Alameda+Itapecuru+645+Barueri+SP" target="_blank" rel="noopener"><span data-cfg="endereco">Alameda Itapecuru, 645</span>, Alphaville. Ver no mapa</a></dd></div>
+        <div><dt>Horário</dt><dd data-cfg="horario">Segunda a sexta, das 9h às 18h</dd></div>
+      </dl>
     </div>
-    <form class="fform" id="leadForm" novalidate>
-      <label>Nome completo<input name="nome" autocomplete="name" required placeholder=" "></label>
+    <form class="fform rv" id="leadForm" novalidate>
+      <label>Nome completo<input name="nome" autocomplete="name" required></label>
       <label>WhatsApp<input name="telefone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="(11) 90000-0000"></label>
-      <label class="full">E-mail<input name="email" type="email" autocomplete="email" placeholder="voce@email.com"></label>
+      <label class="full">E-mail <small>(opcional)</small><input name="email" type="email" autocomplete="email" placeholder="voce@email.com"></label>
       <label>Destino
         <select name="destino" id="fDestino" required>
           <option value="">Escolha</option>
@@ -320,23 +241,23 @@
 <footer>
   <div class="wrap">
     <div class="fgrid">
-      <div><img src="assets/img/escudo.jpg" alt="" width="44" height="50" style="object-fit:cover;border-radius:4px" loading="lazy"><p style="margin:10px 0 0"><span data-cfg="endereco">Alameda Itapecuru, 645</span><br><span data-cfg="complemento">Edifício Metrópolis, Alphaville Industrial</span><br><span data-cfg="cidadeUF">Barueri/SP</span>, CEP <span data-cfg="cep">06454-080</span></p></div>
-      <div><h4>Navegação</h4><a href="#destinos">Destinos</a><a href="#como-funciona">Como funciona</a><a href="#faq">Perguntas</a><a href="#escritorio">Escritório</a><a href="#formulario">Contato</a></div>
+      <div><img src="assets/img/escudo.jpg" alt="" width="44" height="50" loading="lazy" class="flogo"><p><span data-cfg="endereco">Alameda Itapecuru, 645</span><br><span data-cfg="complemento">Edifício Metrópolis, Alphaville Industrial</span><br><span data-cfg="cidadeUF">Barueri/SP</span>, CEP <span data-cfg="cep">06454-080</span></p></div>
+      <div><h4>Navegação</h4><a href="#destinos">Destinos</a><a href="#como-funciona">Como funciona</a><a href="#escritorio">Escritório</a><a href="#faq">Perguntas</a></div>
       <div><h4>Legal</h4><a href="privacidade.html">Política de Privacidade</a><a href="privacidade.html#cookies">Cookies</a><a href="termos.html">Termos de Uso</a></div>
       <div><h4>Contato</h4><a data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener">WhatsApp <span data-cfg="whatsappExibicao">(11) 99153-7423</span></a><a data-mail href="mailto:advdanilomarques@gmail.com" data-cfg="email">advdanilomarques@gmail.com</a></div>
     </div>
     <div class="legal">
       <span>© <span id="year">2026</span> TMS Advogados Associados<span id="regs"></span></span>
-      <span>Conteúdo informativo, conforme o Provimento 205/2021 do CFOAB. Não há promessa de resultado.</span>
+      <span>Conteúdo informativo, conforme o Provimento 205/2021 do CFOAB. Não há promessa de resultado. Imagens de pessoas e cidades são ilustrativas.</span>
     </div>
   </div>
 </footer>
 
-<div class="mbar"><a class="btn" href="#formulario">Analisar meu caso</a><a class="btn2" data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener">WhatsApp</a></div>
-<a class="fab" id="fab" data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></a>
+<div class="mbar"><a class="btn" href="#formulario">Analisar meu caso</a><a class="btn2" data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><span class="ic i-whatsapp-logo"></span></a></div>
+<a class="fab" id="fab" data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><span class="ic i-whatsapp-logo"></span></a>
 
 <script src="assets/js/config.js"></script>
-<script src="assets/js/globe-data.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="assets/vendor/lenis.min.js" defer></script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

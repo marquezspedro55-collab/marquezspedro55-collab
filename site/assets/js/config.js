@@ -1,5 +1,5 @@
 /*
- * DADOS DO ESCRITÓRIO — edite só este arquivo para atualizar o site inteiro.
+ * DADOS DO ESCRITÓRIO: edite só este arquivo para atualizar o site inteiro.
  * Campo vazio ('') = a informação some do site (nada de "[PENDENTE]" no ar).
  */
 window.SITE = {
@@ -33,5 +33,16 @@ window.SITE = {
 
   // Formulário: por padrão envia pelo WhatsApp. Para receber também por e-mail,
   // crie um formulário gratuito em https://formspree.io e cole a URL aqui.
-  formEndpoint: ''
+  formEndpoint: '',
+
+  /*
+   * IMAGENS DA JORNADA (prompts prontos em docs/PROMPTS-IMAGENS.md).
+   * Salve cada arquivo com o nome abaixo em assets/img/cenas/.
+   * Versão de celular (retrato, opcional): mesmo nome terminando em -m.jpg (ex.: 04-lisboa-m.jpg).
+   * Enquanto um arquivo não existir, a cena aparece em modo tipográfico.
+   */
+  imagens: 'assets/img/cenas/',
+
+  // Vídeos opcionais (assets/video/<mesmo nome>.mp4). Deixe false até enviar os vídeos.
+  videos: false
 };
