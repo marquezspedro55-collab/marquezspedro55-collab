@@ -1,0 +1,6 @@
+Fotos das cidades para o cartão-postal da apresentação (opcionais):
+  lisboa.jpg  madri.jpg  dublin.jpg  nova-york.jpg
+Formato paisagem 4:3 (ex.: 800x600 px), até ~150 KB. Use imagens com licença (ex.: Adobe Stock).
+Sem o arquivo, o cartão aparece em papel com nome e coordenadas da cidade.
+
+Foto opcional do aeroporto (fundo da cena do visto): assets/img/aeroporto.jpg  (1920x1080, até ~300 KB).
