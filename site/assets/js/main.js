@@ -36,7 +36,7 @@
 
   /* ---------- rolagem suave ---------- */
   var lenis = null;
-  if (!reduce && window.Lenis) lenis = new Lenis({ duration: 1.2, easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }, autoRaf: false });
+  if (!reduce && window.Lenis) lenis = new Lenis({ lerp: 0.075, wheelMultiplier: 0.9, smoothWheel: true, autoRaf: false });
   if (lenis) lenis.stop();
   function scrollToEl(el) { if (!el) return; if (lenis) lenis.scrollTo(el); else el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); }
   document.addEventListener('click', function (e) {
@@ -83,6 +83,7 @@
     var F = frames.map(function (el) {
       var media = document.createElement('div'); media.className = 'media';
       var city = el.getAttribute('data-city');
+      if (city) el.setAttribute('data-tone', city.toLowerCase().replace(/ /g, '-'));
       if (city) { var fb = document.createElement('div'); fb.className = 'fb'; fb.setAttribute('aria-hidden', 'true'); fb.textContent = city; el.insertBefore(fb, el.firstChild); }
       el.insertBefore(media, el.firstChild);
       return { el: el, media: media, img: null, copy: el.querySelector('.copy'), name: el.getAttribute('data-img'), alt: el.getAttribute('data-alt') || '', city: city, loaded: false };
@@ -150,7 +151,7 @@
     var rx = lerp(58, 14, sm(p / 0.4));                   // de cima (vê a logo) para a frente
     var lidA = lerp(-90, 12, sm((p - 0.28) / 0.34));      // tampa abre
     var zoom = sm((p - 0.66) / 0.3);                      // entra na tela
-    var W = Math.min(520, innerWidth * 0.74), Dp = W * 0.66;
+    var W = innerWidth >= 1800 ? Math.min(680, innerWidth * 0.4) : Math.min(520, innerWidth * 0.74, innerHeight * 1.05), Dp = W * 0.66;
     var sc = lerp(1, Math.max(innerWidth / (W * 0.9), innerHeight / (Dp * 0.9)), zoom * zoom);
     var ty = zoom * sc * Dp * 0.5;                        // centraliza a tela, que fica acima do teclado
     rx = lerp(rx, 0, zoom);
@@ -161,6 +162,10 @@
     openCopy.style.opacity = co.toFixed(3); openCopy.style.transform = 'translate3d(0,' + ((1 - co) * 30).toFixed(1) + 'px,0)';
     screenFill.style.opacity = sm((p - 0.9) / 0.1).toFixed(3);
   }
+
+  /* ---------- profundidade: fotos acompanham levemente o mouse ---------- */
+  var px = 0, py = 0, tpx = 0, tpy = 0, root = document.documentElement;
+  if (!reduce && matchMedia('(pointer: fine)').matches) addEventListener('pointermove', function (e) { tpx = e.clientX / innerWidth - 0.5; tpy = e.clientY / innerHeight - 0.5; }, { passive: true });
 
   /* ---------- faixa de cidades ---------- */
   var mq = $('mq'), mqX = 0, mqV = 0;
@@ -186,6 +191,7 @@
     // faixa: anda sozinha e acelera com a rolagem
     if (!reduce && y > mqTop - vh * 1.2 && y < mqTop + vh) { mqV = lerp(mqV, (y - prevY) * 0.6, 0.1); mqX -= 0.6 + Math.abs(mqV); var w = mq.scrollWidth / 2; if (-mqX > w) mqX += w; mq.style.transform = 'translate3d(' + mqX.toFixed(1) + 'px,0,0)'; }
     fab.classList.toggle('on', started && y > geo[0].top + geo[0].len * 0.5 && !(y + vh > finTop + finH * 0.35 && y < finTop + finH * 0.8));
+    if (Math.abs(tpx - px) > 0.001 || Math.abs(tpy - py) > 0.001) { px = lerp(px, tpx, 0.06); py = lerp(py, tpy, 0.06); root.style.setProperty('--px', px.toFixed(3)); root.style.setProperty('--py', py.toFixed(3)); }
     prevY = y;
     requestAnimationFrame(loop);
   }
@@ -214,7 +220,7 @@
   function pick(k, ev) {
     if (k === sel) return; sel = k; var d = D[k];
     Array.prototype.forEach.call(tabs.children, function (b, i) { b.setAttribute('aria-selected', i === k ? 'true' : 'false'); b.tabIndex = i === k ? 0 : -1; });
-    $('dmName').textContent = d.nome; $('dmCity').textContent = d.cidade.toUpperCase();
+    destMedia.setAttribute('data-tone', d.cidade.toLowerCase().replace(/ /g, '-')); $('dmName').textContent = d.nome; $('dmCity').textContent = d.cidade.toUpperCase();
     // o círculo nasce do lado do botão clicado
     var r = destMedia.getBoundingClientRect(), cx = 50, cy = 50;
     if (ev && ev.clientX && r.width) { cx = cl((ev.clientX - r.left) / r.width) * 100; cy = ev.clientY < r.top ? 0 : 50; }
