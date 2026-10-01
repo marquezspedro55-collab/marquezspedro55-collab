@@ -21,7 +21,7 @@
 <link rel="preload" href="assets/fonts/cormorant.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/main.css">
-<noscript><style>#intro{display:none}.pin{height:auto!important}.stage{position:relative;height:auto;min-height:100vh}.frame{position:relative!important;opacity:1!important;clip-path:none!important;min-height:80vh}.frame .copy,.tour-step{opacity:1!important;transform:none!important;position:relative!important}.rv{opacity:1!important;transform:none!important}</style></noscript>
+<noscript><style>.exp{height:auto;touch-action:auto}.layer{position:relative;visibility:visible;opacity:1;min-height:60vh}.copy{position:relative;left:auto;bottom:auto;margin:40px var(--gut)}.copy>*{opacity:1;transform:none}.rv{opacity:1;transform:none}</style></noscript>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -66,108 +66,54 @@
 }
 </script>
 </head>
-<body class="is-intro">
+<body>
 <a class="skip" href="#destinos">Pular para o conteúdo</a>
-
-<!-- INTRO: "SOMOS" e o nome, letra por letra -->
-<div id="intro" aria-hidden="true">
-  <p class="intro-somos">Somos</p>
-  <p class="intro-name" id="introName">TMS Advogados Associados</p>
-  <i class="intro-line"></i>
-</div>
 
 <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><i></i><i></i></button>
 <div class="mnu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
   <nav aria-label="Menu">
-    <a href="#abertura" data-close>Início</a><a href="#cidades" data-close>Cidades</a><a href="#como-fazemos" data-close>Como fazemos</a><a href="#destinos" data-close>Vistos por país</a><a href="#escritorio" data-close>Escritório</a><a href="#faq" data-close>Perguntas</a>
+    <a href="#exp" data-step="0" data-close>Início</a><a href="#exp" data-step="2" data-close>Destinos</a><a href="#exp" data-step="19" data-close>Como fazemos</a><a href="#destinos" data-close>Vistos por país</a><a href="#escritorio" data-close>Escritório</a><a href="#faq" data-close>Perguntas</a>
   </nav>
   <p class="mnu-foot"><span data-cfg="endereco">Alameda Itapecuru, 645</span>, Alphaville, <span data-cfg="cidadeUF">Barueri/SP</span></p>
 </div>
 
 <main>
-<!-- ABERTURA: notebook 3D com o escudo; a rolagem abre a tampa e entra na tela -->
-<section class="pin" id="abertura" aria-label="Abertura">
-  <div class="stage open-stage">
-    <p class="bg-name" aria-hidden="true">TMS</p>
-    <div class="scene3d" aria-hidden="true">
-      <div class="rig" id="rig">
+<!-- EXPERIÊNCIA: cada rolagem é uma cena (as cenas e textos estão em assets/js/main.js) -->
+<section class="exp" id="exp" aria-label="Apresentação da TMS Advogados" aria-roledescription="apresentação">
+  <div class="layer L-intro vis" id="L-intro" aria-hidden="true">
+    <p class="intro-somos" id="somos">Somos</p>
+    <p class="intro-name" id="introName"><span class="g">TMS</span> Advogados</p>
+    <i class="intro-line" id="introLine"></i>
+  </div>
+  <div class="layer L-laptop" id="L-laptop" aria-hidden="true">
+    <p class="bg-name">TMS</p>
+    <div class="scene3d">
+      <div class="cam" id="cam"><div class="float"><div class="tilt" id="tilt"><div class="spin" id="spin">
         <div class="base"><i class="keys"></i><i class="pad"></i></div>
         <div class="base-edge"></div>
         <div class="lid" id="lid">
-          <div class="lid-face screen"><div class="screen-img" id="screenImg"><span>Lisboa</span></div></div>
+          <div class="lid-face screen"><div class="screen-img"></div></div>
           <div class="lid-face cover"><div class="logo3d"><img src="assets/img/escudo.jpg" alt=""></div></div>
         </div>
-      </div>
+      </div></div></div></div>
       <i class="floor-shadow"></i>
     </div>
-    <div class="open-copy" id="openCopy">
-      <h1>Mudar de país é um processo jurídico. <em>Trate como um.</em></h1>
-      <p>Vistos e cidadania para Portugal, Espanha, Irlanda e Estados Unidos.</p>
-    </div>
-    <div class="screen-fill" id="screenFill" aria-hidden="true"></div>
   </div>
-</section>
-
-<!-- CIDADES: cada cidade em 3 fotos (aérea, rua, detalhe), a câmera entrando -->
-<section class="pin" id="cidades" aria-label="As cidades">
-  <div class="stage">
-    <div class="frame" data-img="cidades/lisboa-1" data-city="Lisboa" data-alt="Lisboa vista do alto, com o Castelo de São Jorge e o rio Tejo">
-      <div class="copy"><p class="place">Portugal · Lisboa</p><h2>Primeiro, o destino inteiro.</h2><p>D7 para quem vive de renda, D8 para quem trabalha de longe, D2 para quem empreende.</p></div></div>
-    <div class="frame" data-img="cidades/lisboa-2" data-city="Lisboa" data-alt="Elétrico 28 numa rua de Lisboa">
-      <div class="copy"><h2>Depois, a rua onde <em>você vai morar.</em></h2><p>Residência na AIMA, NIF e NISS resolvidos antes de você precisar deles.</p></div></div>
-    <div class="frame" data-img="cidades/lisboa-3" data-city="Lisboa" data-alt="Azulejos portugueses azuis numa fachada">
-      <div class="copy"><h2>E a cidadania, <em>se o sangue permitir.</em></h2><p>Nacionalidade portuguesa por descendência, com as certidões certas desde o início.</p></div></div>
-
-    <div class="frame" data-img="cidades/madri-1" data-city="Madri" data-alt="Gran Vía e o edifício Metrópolis ao pôr do sol, em Madri">
-      <div class="copy"><p class="place">Espanha · Madri</p><h2>Madri, sem atalho <em>que custe o visto.</em></h2><p>Residência não lucrativa, nômade digital, estudos e reagrupamento familiar.</p></div></div>
-    <div class="frame" data-img="cidades/madri-2" data-city="Madri" data-alt="Telhados de Madri vistos do alto">
-      <div class="copy"><h2>Apostila e tradução <em>no padrão do consulado.</em></h2><p>Um papel fora do formato devolve o pedido. Conferimos cada um antes de sair daqui.</p></div></div>
-    <div class="frame" data-img="cidades/madri-3" data-city="Madri" data-alt="Plaza Mayor de Madri">
-      <div class="copy"><h2>NIE, TIE e <em>empadronamiento.</em></h2><p>E, com 2 anos de residência legal, o caminho para a nacionalidade espanhola.</p></div></div>
-
-    <div class="frame" data-img="cidades/dublin-1" data-city="Dublin" data-alt="Ha'penny Bridge e o rio Liffey ao pôr do sol, em Dublin">
-      <div class="copy"><p class="place">Irlanda · Dublin</p><h2>Dublin, do Stamp 2 <em>à permissão de trabalho.</em></h2><p>Estudo, Critical Skills e General Employment Permit.</p></div></div>
-    <div class="frame" data-img="cidades/dublin-2" data-city="Dublin" data-alt="O'Connell Bridge iluminada à noite, em Dublin">
-      <div class="copy"><h2>Chegar já <em>com o registro certo.</em></h2><p>IRP e PPS Number orientados antes do embarque.</p></div></div>
-    <div class="frame" data-img="cidades/dublin-3" data-city="Dublin" data-alt="Four Courts refletido no rio Liffey, em Dublin">
-      <div class="copy"><h2>Cidadania irlandesa <em>por descendência.</em></h2><p>Foreign Births Register, com a árvore documental montada por nós.</p></div></div>
-
-    <div class="frame" data-img="cidades/nova-york-1" data-city="Nova York" data-alt="Skyline de Manhattan com o Empire State ao pôr do sol">
-      <div class="copy"><p class="place">Estados Unidos · Nova York</p><h2>Nova York, com estratégia <em>antes do formulário.</em></h2><p>F-1, L-1, O-1, E-2 e green card por EB-2 NIW ou EB-5.</p></div></div>
-    <div class="frame" data-img="cidades/nova-york-2" data-city="Nova York" data-alt="Táxis amarelos numa avenida de Manhattan">
-      <div class="copy"><h2>O visto certo <em>para o seu perfil.</em></h2><p>Estudo, transferência de empresa, talento extraordinário ou investimento.</p></div></div>
-    <div class="frame" data-img="cidades/nova-york-3" data-city="Nova York" data-alt="Manhattan Bridge e o skyline de Nova York">
-      <div class="copy"><h2>Estados Unidos <em>com quem é licenciado lá.</em></h2><p data-eua>Quando exigido, a representação perante as autoridades americanas é feita por advogado licenciado nos EUA.</p></div></div>
-
-    <ol class="rail" aria-hidden="true"><li>Lisboa</li><li>Madri</li><li>Dublin</li><li>Nova York</li></ol>
-    <div class="bar" aria-hidden="true"><i id="citiesBar"></i></div>
+  <div class="layer L-globe" id="L-globe" aria-hidden="true">
+    <canvas id="gl"></canvas>
+    <span class="glab" data-i="0">São Paulo</span><span class="glab" data-i="1">Lisboa</span><span class="glab" data-i="2">Madri</span><span class="glab" data-i="3">Dublin</span><span class="glab" data-i="4">Nova York</span>
   </div>
-</section>
-
-<div class="marquee" aria-hidden="true"><div class="mq-track" id="mq"><span>Lisboa</span><span>Madri</span><span>Dublin</span><span>Nova York</span><span>Lisboa</span><span>Madri</span><span>Dublin</span><span>Nova York</span></div></div>
-
-<!-- COMO FAZEMOS: tour; cada rolagem explica uma etapa -->
-<section class="pin" id="como-fazemos" aria-labelledby="tTitle">
-  <div class="stage tour">
-    <div class="tour-media">
-      <div class="frame" data-img="tour/1-conversa" data-alt="Casal conversando com advogado no escritório"></div>
-      <div class="frame" data-img="tour/2-estrategia" data-alt="Mão assinando um documento sobre a mesa"></div>
-      <div class="frame" data-img="tour/3-documentos" data-alt="Passaporte com carimbos de entrada e saída"></div>
-      <div class="frame" data-img="tour/4-aeroporto" data-alt="Viajante com mala olhando os aviões pelo vidro do aeroporto"></div>
-      <div class="frame" data-img="tour/5-chegada" data-alt="Família desembalando caixas na casa nova"></div>
-    </div>
-    <div class="tour-text">
-      <h2 class="tour-title" id="tTitle">Como fazemos</h2>
-      <div class="tour-steps">
-        <div class="tour-step"><b>1</b><h3>Conversa</h3><p>Você conta seu objetivo e sua situação. Dizemos com clareza o que é viável e o que não é.</p></div>
-        <div class="tour-step"><b>2</b><h3>Estratégia</h3><p>Escolhemos o visto ou a via de cidadania certa para o seu perfil, com prazos e custos por escrito.</p></div>
-        <div class="tour-step"><b>3</b><h3>Documentos</h3><p>Montamos a lista exata e conferimos certidões, apostilas e traduções antes do protocolo.</p></div>
-        <div class="tour-step"><b>4</b><h3>Protocolo</h3><p>Preparamos formulários e dossiê e acompanhamos o agendamento no consulado ou no órgão competente.</p></div>
-        <div class="tour-step"><b>5</b><h3>Chegada</h3><p>Seguimos com você até a decisão e nas primeiras providências no destino.</p></div>
-      </div>
-      <ol class="tour-dots" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li></ol>
-    </div>
+  <div class="layer L-photo" id="L-photo" aria-hidden="true"><div class="slot" id="slotA"></div><div class="slot" id="slotB"></div></div>
+  <div class="layer L-cta" id="L-cta">
+    <p class="bg-name" aria-hidden="true">TMS</p>
+    <h2>Seu próximo endereço <em>começa numa conversa.</em></h2>
+    <a class="wa-big" data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp com a TMS"><span class="ic i-whatsapp-logo"></span></a>
   </div>
+  <div id="copies"></div>
+  <nav class="chapters" id="chapters" aria-label="Capítulos"></nav>
+  <p class="chap-now" id="chapNow" aria-hidden="true"></p>
+  <div class="prog" aria-hidden="true"><i id="prog"></i></div>
+  <div class="curtain" id="curtain" aria-hidden="true"></div>
 </section>
 
 <section class="sec" id="destinos" tabindex="-1" aria-labelledby="dTitle">
@@ -213,11 +159,6 @@
   </div>
 </section>
 
-<section class="final" id="contato" aria-labelledby="cTitle">
-  <p class="bg-name" aria-hidden="true">TMS</p>
-  <h2 class="rv" id="cTitle">Seu próximo endereço <em>começa numa conversa.</em></h2>
-  <a class="wa-big rv" data-wa href="https://wa.me/5511991537423" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp com a TMS"><span class="ic i-whatsapp-logo"></span></a>
-</section>
 </main>
 
 <footer>
@@ -239,7 +180,6 @@
 <div class="grain" aria-hidden="true"></div>
 
 <script src="assets/js/config.js"></script>
-<script src="assets/vendor/lenis.min.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>
