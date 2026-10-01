@@ -94,10 +94,18 @@
   var globe = null, gState = 0, gCur = { lat: 10, lon: -40, dist: 420 }, gTgt = { lat: 24, lon: -32, dist: 330 }, gActive = -1, arcK = 0, globeOn = false;
   function loadThree() {
     if (gState) return; gState = 1;
-    var s = document.createElement('script'); s.src = 'assets/vendor/three.min.js';
-    s.onload = function () { try { globe = buildGlobe(); } catch (e) { console.error(e); } gState = 2; };
-    document.head.appendChild(s);
+    var urls = ['assets/vendor/three.min.js', 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'];
+    (function tryLoad(k) {
+      if (k >= urls.length) { gState = 3; cssGlobe(); return; }
+      var s = document.createElement('script'); s.src = urls[k];
+      s.onload = function () { try { globe = buildGlobe(); gState = 2; L.globe.classList.remove('fallback'); } catch (e) { console.error(e); gState = 3; cssGlobe(); } };
+      s.onerror = function () { tryLoad(k + 1); };
+      document.head.appendChild(s);
+    })(0);
   }
+  /* globo de reserva (sem WebGL): esfera com a textura da Terra girando */
+  function cssGlobe() { L.globe.classList.add('fallback'); }
+  setTimeout(function () { if (gState !== 2) cssGlobe(); }, 6000);
   function buildGlobe() {
     var T = THREE, cv = $('gl');
     var renderer = new T.WebGLRenderer({ canvas: cv, antialias: true, alpha: true });
@@ -164,6 +172,7 @@
   function lonShort(a, b, k) { var d = ((b - a + 540) % 360) - 180; return a + d * k; }
   function setGlobe(g, instant) {
     var t = typeof g === 'string' ? G[g] : g;
+    L.globe.style.setProperty('--glon', ((180 + t.lon) / 360 * 100).toFixed(1) + '%'); L.globe.style.setProperty('--gzoom', (330 / t.dist).toFixed(2));
     gTgt = { lat: t.lat, lon: t.lon, dist: t.dist };
     if (instant) gCur = { lat: t.lat, lon: t.lon, dist: t.dist };
   }
@@ -217,6 +226,7 @@
     chapNow.textContent = i > 0 ? CH[c].name : '';
     fab.classList.toggle('on', i >= 1 && i < LAST);
     exp.classList.toggle('free', i === LAST);
+    $('prevBtn').disabled = i === 0; $('nextBtn').hidden = i === LAST;
     var g = STEPS[i].g; gActive = STEPS[i].type === 'globe' ? -1 : (g ? LAB[g] : -1);
     for (var k = 1; k <= 3; k++) preload(i + k);
   }
@@ -347,6 +357,9 @@
   });
   // se a pessoa arrastar a barra de rolagem para baixo, a apresentação fica no fim
   addEventListener('scroll', function () { if (cur !== LAST && (window.scrollY || 0) > 40) { busy = false; cur = LAST; stateOf(LAST); setChrome(LAST); setCopy(LAST); } }, { passive: true });
+
+  $('nextBtn').addEventListener('click', function () { go(cur + 1); });
+  $('prevBtn').addEventListener('click', function () { go(cur - 1); });
 
   /* ---------- laço de animação (globo e profundidade) ---------- */
   var root = document.documentElement, px = 0, py = 0, tpx = 0, tpy = 0, t0 = performance.now(), tPrev = t0;
