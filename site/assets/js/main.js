@@ -153,14 +153,14 @@
     var zoom = sm((p - 0.66) / 0.3);                      // entra na tela
     var W = innerWidth >= 1800 ? Math.min(680, innerWidth * 0.4) : Math.min(520, innerWidth * 0.74, innerHeight * 1.05), Dp = W * 0.66;
     var sc = lerp(1, Math.max(innerWidth / (W * 0.9), innerHeight / (Dp * 0.9)), zoom * zoom);
-    var ty = zoom * sc * Dp * 0.5;                        // centraliza a tela, que fica acima do teclado
+    var ty = zoom * (sc * Dp * 0.5 + vh * 0.11);                       // centraliza a tela, que fica acima do teclado
     rx = lerp(rx, 0, zoom);
     var bob = reduce ? 0 : Math.sin(t * 1.4) * 6 * (1 - settle);
     rig.style.transform = 'translate3d(0,' + (bob * vh / 100 + ty).toFixed(1) + 'px,0) scale(' + sc.toFixed(3) + ') rotateX(' + (-rx).toFixed(2) + 'deg) rotateY(' + ry.toFixed(2) + 'deg)';
     lid.style.transform = 'translate3d(0,-9px,calc(var(--D) / -2)) rotateX(' + lidA.toFixed(2) + 'deg)';
     var co = 1 - sm((p - 0.12) / 0.2);
     openCopy.style.opacity = co.toFixed(3); openCopy.style.transform = 'translate3d(0,' + ((1 - co) * 30).toFixed(1) + 'px,0)';
-    screenFill.style.opacity = sm((p - 0.9) / 0.1).toFixed(3);
+
   }
 
   /* ---------- profundidade: fotos acompanham levemente o mouse ---------- */
